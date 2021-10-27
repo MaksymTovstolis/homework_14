@@ -9,8 +9,9 @@ let tuesday = [
    ['A whole lot of nothing',240]
 ];
 
-let newMonday = 
-  monday
+
+function mainFunc(list) {
+  list
   .map(function(el){
     return [el[0],el[1] / 60];})
   .filter(function(item){
@@ -27,27 +28,6 @@ let newMonday =
       <p>Task amount: ${elem[2]}<p>
     `)
    })
-;
-console.log(newMonday);
+;}
 
-let newTuesday = 
-  tuesday.map(function(el){
-    return [el[0],el[1] / 60];
-  })
-  .filter(function(item){
-    return item[1]>2})
-  .map(function(item){
-    const newItem = [...item];
-    newItem.push(item[1] * amount);
-    return newItem
-  })
-  .forEach((elem) => {
-     document.write(`
-   <tr>
-      <p>Task name: ${elem[0]}<p>
-      <p>Task duration: ${elem[1]}<p>
-      <p>Task amount: ${elem[2]}<p>
-    `)
-   });
-console.log(newTuesday);
-
+mainFunc(monday)
