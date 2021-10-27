@@ -1,4 +1,4 @@
-let amount = 100;
+let amount = parseInt(100);
 let monday = [
   ['Write a tutorial',180],
   ['Some web development',120]
@@ -11,17 +11,6 @@ let tuesday = [
 
 let newMonday = 
   monday
-  .map(function(el){return [el[0],el[1] / 60];})
-  .filter(function(item){return item[1]>2})
-  .map(function(item){
-    const newItem = [...item];
-     newItem.push(item[1] * amount);
-    return newItem})
-;
-console.log(newMonday);
-
-let newTuesday = 
-  tuesday
   .map(function(el){
     return [el[0],el[1] / 60];})
   .filter(function(item){
@@ -30,17 +19,35 @@ let newTuesday =
     const newItem = [...item];
      newItem.push(item[1] * amount);
     return newItem})
-;
-console.log(newTuesday  );
-
-
-
-
-document.write(`Monday
-<table>
+  .forEach((elem) => {
+    document.write(`
   <tr>
-  <td>Task name: Write a tutorial</td>
-  <td>Taks duration: 3 hours</td>
-  <td>Task amount: $300</td>
-  </tr>
-</table>`)
+        <p>Task name: ${elem[0]}<p>
+      <p>Task duration: ${elem[1]}<p>
+      <p>Task amount: ${elem[2]}<p>
+    `)
+   })
+;
+console.log(newMonday);
+
+let newTuesday = 
+  tuesday.map(function(el){
+    return [el[0],el[1] / 60];
+  })
+  .filter(function(item){
+    return item[1]>2})
+  .map(function(item){
+    const newItem = [...item];
+    newItem.push(item[1] * amount);
+    return newItem
+  })
+  .forEach((elem) => {
+     document.write(`
+   <tr>
+      <p>Task name: ${elem[0]}<p>
+      <p>Task duration: ${elem[1]}<p>
+      <p>Task amount: ${elem[2]}<p>
+    `)
+   });
+console.log(newTuesday);
+
